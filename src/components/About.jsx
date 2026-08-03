@@ -1,46 +1,72 @@
-import React from "react";
-import Profile from '../assets/Mahima.jpeg'
+import Section from './ui/Section'
+import Reveal from './ui/Reveal'
+import Profile from '../assets/mahima-portrait.jpg'
 
-const About = () => {
+const focusAreas = [
+  {
+    title: 'Component architecture',
+    body: 'Reusable, data-driven components with state modelled explicitly, so new requirements extend the model instead of adding another branch.',
+  },
+  {
+    title: 'Performance in production',
+    body: 'Code splitting, lazy loading, render profiling and cache tuning, measured against LCP and TBT rather than guessed at.',
+  },
+  {
+    title: 'Working across the team',
+    body: 'Comfortable holding the API contract conversation with backend, the spacing conversation with design, and the edge-case conversation with QA.',
+  },
+]
+
+export default function About() {
   return (
-    <section
+    <Section
       id="about"
-      className="w-full bg-black text-white pt-4 pb-32 px-6 md:px-20 flex flex-col md:flex-row items-center"
+      eyebrow="About"
+      title="Frontend is the part of the product people actually touch."
     >
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center">
-        {/* Text Section */}
-        <div className="md:w-1/2">
-          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 mb-8">
-            About Me
-          </h2>
-
-          <p className="text-lg leading-8 text-gray-300 mb-6">
-            Hi! I'm <span className="text-purple-400 font-semibold">Mahima Dhore</span>, a passionate front-end developer dedicated to building clean, responsive, and engaging user interfaces. My coding journey began with a deep interest in web development and evolved into creating real-world applications that make an impact.
+      <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+        <div className="space-y-5 text-base leading-8 text-slate-400">
+          <p>
+            I started in enterprise software at Capgemini, building incident-management interfaces
+            used every day by support teams, where a broken state isn&apos;t a design nitpick, it&apos;s
+            someone unable to log a fault. That set the standard I still work to.
           </p>
-
-          <p className="text-lg leading-8 text-gray-300">
-            With a strong foundation in HTML, CSS, JavaScript, and React, I love transforming ideas into visually appealing digital experiences. My goal is to keep learning, building, and growing into a full-stack developer while contributing to projects that solve real problems.
+          <p>
+            Since then I&apos;ve moved deeper into the React ecosystem: a MERN stack programme and two
+            freelance builds, then production work at{' '}
+            <span className="font-medium text-slate-200">Sorted</span>, where I own frontend features
+            end to end. Most of my recent work sits in real-time, data-heavy UI: GraphQL layers with
+            Apollo, Firebase sync, and interactive modules whose state has to stay consistent as
+            users move through them.
           </p>
-
-          <div className="w-full h-[2px] bg-gradient-to-r from-purple-500 to-blue-500 my-10" />
+          <ul className="grid gap-4 pt-4 sm:grid-cols-3">
+            {focusAreas.map((area) => (
+              <li key={area.title} className="rounded-xl border border-white/10 bg-ink-900/60 p-4">
+                <h3 className="text-sm font-semibold text-white">{area.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{area.body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Image Section */}
-        <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center">
-          <div className="relative group">
-          <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-indigo-300 to-purple-600 blur-xl opacity-60 group-hover:opacity-90 transition duration-500"></div>
-.v 
+        <Reveal delay={120} className="justify-self-center lg:justify-self-end">
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-accent/25 to-accent-deep/25 blur-2xl"
+            />
             <img
               src={Profile}
-              alt="Profile"
-              className="relative w-64 h-64 rounded-full object-cover border-4 border-white shadow-xl transition-transform transform group-hover:scale-110 group-hover:shadow-2xl"
+              alt="Portrait of Mahima Dhore"
+              width={320}
+              height={384}
+              loading="lazy"
+              decoding="async"
+              className="relative h-96 w-80 rounded-3xl border border-white/10 object-cover"
             />
           </div>
-        </div>
-
+        </Reveal>
       </div>
-    </section>
-  );
-};
-
-export default About;
+    </Section>
+  )
+}
