@@ -1,24 +1,39 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import About from './components/About';
-import Projects from './components/Projects';
-import Experience from './components/Experience';
-import Contact from './components/Contact';
-import Skills from './components/Skills';
+import Navbar from './components/Navbar'
+import Home from './components/Home'
+import About from './components/About'
+import Experience from './components/Experience'
+import Projects from './components/Projects'
+import Skills from './components/Skills'
+import Education from './components/Education'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
 
-const App = () => {
+export default function App() {
   return (
-    <div className="bg-black text-white">
-      <Navbar />
-      <Home />
-      <About />
-      <Experience />
-      <Projects />
-      <Skills/>
-      <Contact />
-    </div>
-  );
-};
+    <>
+      {/* Skip link */}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60]
+                   focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-sm
+                   focus:font-semibold focus:text-ink-950"
+      >
+        Skip to content
+      </a>
 
-export default App;
+      <Navbar />
+
+      <main id="main">
+        <Home />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Education />
+        <Contact />
+      </main>
+
+      <Footer />
+    </>
+  )
+}

@@ -1,97 +1,88 @@
-import React from "react";
-import {
-  FaInstagram,
-  FaLinkedin,
-  FaFacebook,
-  FaTwitter,
-  FaPhone,
-  FaEnvelope,
-  FaMapMarkerAlt,
-} from "react-icons/fa";
+import { Mail, Phone, MapPin, Download } from 'lucide-react'
+import { FaLinkedin, FaGithub } from 'react-icons/fa'
+import Section from './ui/Section'
+import Reveal from './ui/Reveal'
+import ContactForm from './ContactForm'
+import { profile, links } from '../data/site'
 
-const Contact = () => {
+const details = [
+  { icon: Mail, label: profile.email, href: links.email },
+  { icon: Phone, label: profile.phone, href: `tel:${profile.phoneHref}` },
+  { icon: MapPin, label: profile.location },
+]
+
+const socials = [
+  { icon: FaLinkedin, label: 'LinkedIn', href: links.linkedin },
+  { icon: FaGithub, label: 'GitHub', href: links.github },
+]
+
+export default function Contact() {
   return (
-    <section id="contact" className="w-full bg-black text-white pt-0 pb-24 px-6 md:px-20">
-
-      <div className="max-w-5xl mx-auto">
-        {/* Heading */}
-        <h2 className="mt-0 text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 mb-8 ml-4 md:ml-40">
-          Contact
-        </h2>
-
-        {/* Contact Content */}
-        <div className="flex flex-col md:flex-row gap-10 text-gray-300">
-          {/* Left Section */}
-          <div className="flex-1 space-y-6">
-            <p className="text-lg">
-              I'm always open to collaboration, freelancing, or just a friendly tech chat! Feel free to connect with me through any platform.
+    <Section
+      id="contact"
+      eyebrow="Contact"
+      title="Looking for a React developer?"
+    >
+      <div className="grid gap-10 lg:grid-cols-2">
+        <Reveal>
+          <div className="space-y-8">
+            <p className="max-w-md text-base leading-7 text-slate-400">
+              I&apos;m open to React Frontend Developer roles and happy to talk through any of the
+              work above. The fastest route is email, and I reply within a day.
             </p>
 
-            <div className="space-y-4 text-base">
-              <div className="flex items-center gap-4">
-                <FaPhone className="text-blue-500 text-xl" />
-                <span>+91 7028708249</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <FaEnvelope className="text-blue-500 text-xl" />
-                <span>mahimadhore0929@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <FaMapMarkerAlt className="text-blue-500 text-xl" />
-                <span>Pune, Maharashtra, India</span>
-              </div>
-            </div>
+            <ul className="space-y-4">
+              {details.map(({ icon: Icon, label, href }) => (
+                <li key={label}>
+                  {href ? (
+                    <a
+                      href={href}
+                      className="inline-flex items-center gap-3 text-slate-300 transition-colors hover:text-accent"
+                    >
+                      <Icon size={17} aria-hidden="true" className="text-accent" />
+                      {label}
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center gap-3 text-slate-300">
+                      <Icon size={17} aria-hidden="true" className="text-accent" />
+                      {label}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
 
-            {/* Social Icons */}
-            <div className="flex gap-6 mt-6">
-              <a href="#" className="hover:text-purple-400 transition">
-                <FaInstagram size={24} />
-              </a>
-              <a href="#" className="hover:text-purple-400 transition">
-                <FaLinkedin size={24} />
-              </a>
-              <a href="#" className="hover:text-purple-400 transition">
-                <FaFacebook size={24} />
-              </a>
-              <a href="#" className="hover:text-purple-400 transition">
-                <FaTwitter size={24} />
-              </a>
-            </div>
-          </div>
-
-          {/* Right Section - Message Form */}
-          <div className="flex-1">
-            <form className="space-y-4">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full p-3 bg-gray-800 text-white rounded-md border border-gray-700 focus:outline-none focus:border-purple-500"
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full p-3 bg-gray-800 text-white rounded-md border border-gray-700 focus:outline-none focus:border-purple-500"
-              />
-              <textarea
-                rows="4"
-                placeholder="Your Message"
-                className="w-full p-3 bg-gray-800 text-white rounded-md border border-gray-700 focus:outline-none focus:border-purple-500"
-              />
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 rounded-md hover:opacity-90 transition"
+            <div className="flex flex-wrap items-center gap-3">
+              {socials.map(({ icon: Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2
+                             text-sm font-medium text-slate-300 transition hover:border-accent hover:text-accent"
+                >
+                  <Icon size={16} aria-hidden="true" />
+                  {label}
+                </a>
+              ))}
+              <a
+                href={profile.resume}
+                download
+                className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm
+                           font-semibold text-ink-950 transition hover:bg-accent"
               >
-                Send Message
-              </button>
-            </form>
+                <Download size={16} aria-hidden="true" />
+                Resume (PDF)
+              </a>
+            </div>
           </div>
-        </div>
+        </Reveal>
 
-        {/* Divider */}
-        <div className="w-full h-[2px] bg-gradient-to-r from-purple-500 to-blue-500 my-10" />
+        <Reveal delay={100}>
+          <ContactForm />
+        </Reveal>
       </div>
-    </section>
-  );
-};
-
-export default Contact;
+    </Section>
+  )
+}

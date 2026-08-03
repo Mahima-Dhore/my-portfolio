@@ -1,31 +1,66 @@
-import React from "react";
+import Section from './ui/Section'
+import Reveal from './ui/Reveal'
+import { experience } from '../data/experience'
 
-const Experience = () => {
+export default function Experience() {
   return (
-    <section id="experience" className="w-full bg-black text-gray-200 pt-5 pb-12 px-6 md:px-20">
+    <Section
+      id="experience"
+      eyebrow="Experience"
+      title="Three roles, one throughline: shipping frontends people rely on."
+    >
+      <ol className="relative space-y-10 border-l border-white/10 pl-6 md:pl-10">
+        {experience.map((job, index) => (
+          <li key={job.company} className="relative">
+            {/* Kept outside Reveal so its animated transform does not shift the dot. */}
+            <span
+              aria-hidden="true"
+              className={`absolute top-8 h-[9px] w-[9px] rounded-full -left-[28px] md:-left-[44px] ${
+                job.current ? 'bg-accent ring-4 ring-accent/20' : 'bg-slate-600'
+              }`}
+            />
 
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 mb-8">
-          Experience
-        </h2>
+            <Reveal delay={index * 90}>
+              <article className="card p-6 md:p-7">
+                <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
+                  <h3 className="text-lg font-semibold text-white">
+                    {job.role} <span className="text-accent">· {job.company}</span>
+                  </h3>
+                  <p className="shrink-0 text-sm text-slate-400">{job.period}</p>
+                </div>
 
-        <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-700">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
-            <h3 className="text-xl font-semibold text-purple-400">
-              Capgemini – Software Engineer
-            </h3>
-            <p className="text-sm text-gray-400">November 2021 – August 2023</p>
-          </div>
+                <p className="mt-1 text-xs text-slate-500">
+                  {job.context} · {job.location}
+                  {job.current && (
+                    <span className="ml-2 rounded-full bg-emerald-400/10 px-2 py-0.5 font-medium text-emerald-400">
+                      Current
+                    </span>
+                  )}
+                </p>
 
-          <p className="text-gray-300 leading-7">
-            I contributed to an enterprise-level vehicle incident management and spare parts tracking system for a leading automotive client. I worked on designing and developing responsive user interfaces using HTML, CSS, JavaScript, and JSP. My role also involved integrating APIs, debugging, optimizing performance, and collaborating closely with cross-functional teams. This experience enhanced my frontend development skills and deepened my understanding of large-scale web applications and agile workflows.
-          </p>
-        </div>
+                <p className="mt-4 text-base leading-7 text-slate-300">{job.summary}</p>
 
-        <div className="w-full h-[2px] bg-gradient-to-r from-blue-500 to-purple-500 my-10" />
-      </div>
-    </section>
-  );
-};
+                <ul className="mt-4 space-y-2.5">
+                  {job.points.map((point) => (
+                    <li key={point} className="flex gap-3 text-sm leading-6 text-slate-400">
+                      <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
 
-export default Experience;
+                <ul className="mt-5 flex flex-wrap gap-2">
+                  {job.tech.map((item) => (
+                    <li key={item} className="chip">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </Reveal>
+          </li>
+        ))}
+      </ol>
+    </Section>
+  )
+}
