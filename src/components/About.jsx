@@ -1,6 +1,6 @@
 import Section from './ui/Section'
 import Reveal from './ui/Reveal'
-import Profile from '../assets/mahima-portrait.jpg'
+import Profile from '../assets/Profile_Photo.jpeg'
 
 const focusAreas = [
   {
