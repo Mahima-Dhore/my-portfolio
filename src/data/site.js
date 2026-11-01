@@ -5,7 +5,7 @@ export const profile = {
   email: 'mahimadhore0929@gmail.com',
   phone: '+91 7028708249',
   phoneHref: '+917028708249',
-  resume: '/resume/Mahima_Dhore_Resume.pdf',
+  resume: '/resume/Resume_Mahima_Dhore_Immediate_Joiner.pdf',
 }
 
 export const links = {

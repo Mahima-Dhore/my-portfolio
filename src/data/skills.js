@@ -25,46 +25,79 @@ export const featuredSkills = [
   { name: 'Git', icon: FaGitAlt, color: 'text-orange-400' },
 ]
 
+
 export const skillGroups = [
   {
-    title: 'Frameworks & Libraries',
+    title: 'Frontend',
     items: [
       'React.js (v19)',
+      'React Hooks',
+      'React Router',
+      'JavaScript (ES6+ — async/await, Promises)',
+      'TypeScript',
+      'HTML5',
+      'CSS3',
+      'Tailwind CSS',
+    ],
+  },
+  {
+    title: 'State & Data',
+    items: [
       'Redux Toolkit (RTK)',
       'Context API',
-      'Tailwind CSS',
-      'Bootstrap',
+      'GraphQL',
+      'Apollo Client',
+      'REST APIs',
+      'Firebase',
+      'MySQL',
+      'Okta (OAuth-based Authentication)',
+    ],
+  },
+  {
+    title: 'Performance & Quality',
+    items: [
+      'Code Splitting',
+      'Lazy Loading',
+      'Rendering Optimization',
+      'Core Web Vitals',
+      'Responsive Design',
+      'Cross-Browser Compatibility',
+      'Accessibility (WCAG)',
+    ],
+  },
+  {
+    title: 'Testing, CI/CD & Tools',
+    items: [
+      'Jest',
+      'React Testing Library',
+      'Git',
+      'CI/CD Pipelines',
+      'Vite',
+      'Postman',
+      'Figma',
       'Node.js',
       'Express.js',
     ],
   },
   {
-    title: 'Languages',
-    items: ['JavaScript (ES6+)', 'TypeScript', 'HTML5', 'CSS3'],
-  },
-  {
-    title: 'API & Data',
-    items: ['GraphQL', 'Apollo Client', 'REST APIs', 'React Query', 'Firebase'],
-  },
-  {
-    title: 'Database',
-    items: ['MySQL'],
-  },
-  {
-    title: 'Tools & Platforms',
-    items: ['Git', 'Vite', 'Postman', 'WP Engine', 'Figma', 'VS Code', 'Cursor AI', 'Claude AI'],
-  },
-  {
-    title: 'Practices',
+    title: 'AI-Assisted Development',
     items: [
-      'Component Architecture',
-      'Code Splitting',
-      'Lazy Loading',
-      'Responsive Design',
-      'Cross-Browser Compatibility',
-      'Core Web Vitals (LCP, TBT)',
-      'Accessibility',
+      'GitHub Copilot',
+      'Cursor AI',
+      'Claude AI',
+      'ChatGPT',
+    ],
+  },
+  {
+    title: 'Architecture & Practices',
+    items: [
+      'Clean Architecture',
+      'Component-Driven Design',
+      'Separation of Concerns',
+      'Modular Code Organization',
+      'Code Reviews',
       'Agile/Scrum',
     ],
   },
-]
+];
+
